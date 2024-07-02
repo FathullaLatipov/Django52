@@ -102,8 +102,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
+# localhost:8000/static/hello.png
 STATIC_URL = 'static/'
+# User/user/Desktop/static -> статические файлы
+STATIC_ROOT = BASE_DIR / 'static'
+# User/user/Desktop/assets -> ассетс файлы
+import os
+STATICFILES_DIRS = (os.path.join(BASE_DIR / 'assets',),)
+# python manage.py collectstatic
+# Путь для медиа файлов localhost:8000/media/product/product.png
+MEDIA_URL = 'media/'
+# Путь где находится наш файл /User/user/...
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
