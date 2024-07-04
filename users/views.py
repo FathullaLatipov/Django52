@@ -44,3 +44,11 @@ def login_view(request):
     else:
         form = UserLoginForm()
         return render(request, 'login.html', {'form': form})
+
+@login_required
+def profile_view(request):
+    return render(request, 'profile.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
