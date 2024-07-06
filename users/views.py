@@ -8,12 +8,14 @@ from .forms import UserRegistrationForm, UserLoginForm
 def register_view(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
+        print(form)
         # email = 12223f23errgg@22gmail.com
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
+            password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
+            print(user)
             login(request, user)
             return redirect('login')
         else:
