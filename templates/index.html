@@ -134,9 +134,11 @@
                 <h5 class="card-title">{{ i.product_name }}</h5>
                 <p class="card-text">{{ i.descriptions }}</p>
                 <a href="/products/{{ i.id }}" class="btn btn-primary">See more</a>
-                <form>
+                <form action="/add_to_cart/{{ i.id }}" method="post">
                     <br>
-                    <button class="btn btn-success">Add to cart</button>
+                    {% csrf_token %}
+                    <input type="number" min="1" value="1" name="pr_count">
+                    <button class="btn btn-success" type="submit">Add to cart</button>
                 </form>
               </div>
             </div>
