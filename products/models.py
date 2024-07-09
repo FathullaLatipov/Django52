@@ -35,10 +35,18 @@ class ProductModel(models.Model):
 
 
 # Создать модель для Корзины(Заказа)
-# class CartModel
-# user_id
-# user_product -> ForeignKey(ProductModel)
-# user_product_quantity
-# user_add_date -> DateTimeField
+class CartModel(models.Model):
+    user_id = models.IntegerField()
+    user_product = models.ForeignKey(ProductModel, on_delete=models.CASCADE, null=True)
+    user_product_quantity = models.IntegerField(default=0)
+    user_add_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f"{self.user_product})"
+
+    class Meta:
+        verbose_name = "Cart"
+        verbose_name_plural = "Carts"
+
 
 # 2.Вы должны показать этот модель на admin.py
