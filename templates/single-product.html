@@ -5,6 +5,13 @@
     <title>О продукте</title>
 </head>
 <body>
- Название: {{ product.product_name }}
+<div style="text-align: center">
+     <p>Название: {{ product.product_name }}</p>
+     <p>Кол-во: {{ product.count }}</p>
+     <img src="{{ product.image.url }}" width="400px" alt="">
+     <p>Описания: {{ product.descriptions }}</p>
+     <p>Цена: $ {{ product.price }}</p>
+    <p>Время создание: {{ product.created_at|date:"d M Y H:i" }}</p>
+</div>
 </body>
 </html>
