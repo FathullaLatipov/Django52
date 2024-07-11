@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from products.handler import bot
 from products.models import ProductModel, CategoryModel, CartModel
 
 
@@ -59,6 +60,8 @@ def user_cart(request):
                          f'\n Кол-во: {i.user_product_quantity}\n' \
                          f'\n ID пользователя: {i.user_id}\n' \
                          f'\n Цена: {i.user_product.price}\n'
-            pass
+            bot.send_message(-1002195311609, main_text)
+            cart.delete()
+            return redirect('/')
     else:
         return render(request, 'cart.html', context={'cart': cart})

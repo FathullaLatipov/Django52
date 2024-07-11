@@ -20,7 +20,7 @@ urlpatterns = [
     path('products/<int:id>', product_page),
     path('notfound', not_fount_page, name='notfound'),
     path('add_to_cart/<int:id>', add_product_to_cart),
-    path('user_cart', user_cart)
+    path('user_cart', user_cart, name='user_cart')
 ]
 # /media/product.png,
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
