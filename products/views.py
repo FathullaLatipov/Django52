@@ -3,12 +3,25 @@ from django.shortcuts import render, redirect
 from products.handler import bot
 from products.models import ProductModel, CategoryModel, CartModel
 
+from django.views.generic import ListView
 
-def home_page(request):
-    products = ProductModel.objects.all()
-    categories = CategoryModel.objects.all()
-    context = {'products': products, 'categories': categories}
-    return render(request, 'index.html', context=context)
+
+# def home_page(request):
+#     products = ProductModel.objects.all()
+#     categories = CategoryModel.objects.all()
+#     context = {'products': products, 'categories': categories}
+#     return render(request, 'index.html', context=context)
+
+class HomePage(ListView):
+    template_name = 'index.html'
+    model = ProductModel
+    context_object_name = 'products'
+    paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = CategoryModel.objects.all()
+        return context
 
 def not_fount_page(request):
     return render(request, 'notfound.html')

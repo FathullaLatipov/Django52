@@ -5,12 +5,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 
-from products.views import home_page, about_page, not_fount_page, search, product_page, add_product_to_cart, user_cart
+from products.views import HomePage, about_page, not_fount_page, search, product_page, add_product_to_cart, user_cart
 from users.views import register_view, login_view, profile_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page, name='home'),
+    path('', HomePage.as_view(), name='home'),
     path('about', about_page),
     path('signup', register_view, name='signup'),
     path('login', login_view, name='login'),
